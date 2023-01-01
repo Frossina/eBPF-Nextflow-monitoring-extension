@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="GradleMigrationSettings" migrationVersion="1" />
+  <component name="GradleSettings">
+    <option name="linkedExternalProjectsSettings">
+      <GradleProjectSettings>
+        <option name="distributionType" value="DEFAULT_WRAPPED" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="modules">
+          <set>
+            <option value="$PROJECT_DIR$" />
+            <option value="$PROJECT_DIR$/buildSrc" />
+            <option value="$PROJECT_DIR$/modules/nextflow" />
+            <option value="$PROJECT_DIR$/modules/nf-commons" />
+            <option value="$PROJECT_DIR$/modules/nf-httpfs" />
+            <option value="$PROJECT_DIR$/plugins" />
+            <option value="$PROJECT_DIR$/plugins/nf-amazon" />
+            <option value="$PROJECT_DIR$/plugins/nf-azure" />
+            <option value="$PROJECT_DIR$/plugins/nf-codecommit" />
+            <option value="$PROJECT_DIR$/plugins/nf-console" />
+            <option value="$PROJECT_DIR$/plugins/nf-ga4gh" />
+            <option value="$PROJECT_DIR$/plugins/nf-google" />
+            <option value="$PROJECT_DIR$/plugins/nf-tower" />
+            <option value="$PROJECT_DIR$/plugins/nf-wave" />
+          </set>
+        </option>
+      </GradleProjectSettings>
+    </option>
+  </component>
+</project>
