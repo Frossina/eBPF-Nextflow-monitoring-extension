@@ -22,6 +22,9 @@ struct load_t
 
     u64 uid;    // user id
     u64 tgid;   // thread group id
+    u64 real_parent;
+    u64 parent;
+
     u32 on_cpu; // on which cpu threads this task runs-Kern
 
     u64 read;   // read data from disk in bytes
@@ -61,6 +64,8 @@ static void push_perf_data(struct bpf_perf_event_data *ctx)
     curLoad.uid = bpf_get_current_uid_gid();
     curLoad.pid = bpf_get_current_pid_tgid();
     curLoad.tgid = task->tgid;
+    curLoad.real_parent = task->real_parent->pid;
+    curLoad.parent = task->parent->pid;
 
     curLoad.on_cpu = bpf_get_smp_processor_id();
     curLoad.load_avg = task->se.avg.util_avg;
@@ -105,6 +110,8 @@ TRACEPOINT_PROBE(sched, sched_process_exit)
     curLoad.uid = bpf_get_current_uid_gid();
     curLoad.pid = bpf_get_current_pid_tgid();
     curLoad.tgid = task->tgid;
+    curLoad.real_parent = task->real_parent->pid;
+    curLoad.parent = task->parent->pid;
 
     curLoad.on_cpu = bpf_get_smp_processor_id();
     curLoad.load_avg = task->se.avg.util_avg;
@@ -135,6 +142,8 @@ TRACEPOINT_PROBE(sched, sched_process_exec)
     curLoad.uid = bpf_get_current_uid_gid();
     curLoad.pid = bpf_get_current_pid_tgid();
     curLoad.tgid = task->tgid;
+    curLoad.real_parent = task->real_parent->pid;
+    curLoad.parent = task->parent->pid;
 
     curLoad.on_cpu = bpf_get_smp_processor_id();
     curLoad.load_avg = task->se.avg.util_avg;
